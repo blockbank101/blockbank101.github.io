@@ -1,0 +1,10 @@
+# blockbank101.github.io
+BlockBank Rules Of The Game
+BlockBank is a decentralized blockchain financial game running on the BSC public chain.The game is carefully programmed and deployed by the smart contract completely decentralized and not controlled by anyone.No matter how large the amount of the fund pool is all funds will only be allocated according to the trigger conditions of the smart contract and the contract will always run automatically unless the BSC public chain is closed.
+Players deposit on the chain through DAPP. Every five days is a settlement cycle. Players who deposit for five days get the principal plus 10% income. There must be three kinds of tokens in the player's wallet. Usdt is used for deposit, bkbk is used to pay the service charge of participating in the game (the equivalent bkbk of 3% of the deposit amount), and BNB is used to pay the gas fee on the chain.
+Operation mechanism of the game: the contract will automatically calculate the minimum deposit amount of the day every day (00:00-24:00), so as to ensure that the funds in the deposit pool remain at 90% of the periodic deposit amount. If the actual deposit does not reach the minimum deposit amount of the day by 24:00, the game will automatically start liquidation.
+Clearing mechanism: at 24:00 a day, if the deposit does not reach the minimum deposit amount of the day, the players who deposit on the day can get the principal plus 10% income. The remaining funds in the deposit pool will be returned according to the deposit proportion of the players who are not out. The deposit pool will be emptied and the game will be restarted.
+Characteristics of the game: when players initiate a deposit, there will be three possible results.
+Complete the minimum deposit every day and wait for a cycle (five days) to obtain 10% of the deposit income + principal.
+If you restart today, you will get 10% of the deposit income + principal.
+Restart within the deposit cycle (five days), with a loss of 10% - 20% of the deposit principal.
