@@ -1,0 +1,183 @@
+.container {
+	width: 100vw;
+	height: 100vh;
+	padding-bottom: calc(var(--base)*80);
+	background-image: url(../img/bg.png);
+	background-size: 100%;
+	background-position: center;
+	overflow-y: scroll;
+}
+
+.container::-webkit-scrollbar {
+	display: none;
+}
+
+.header {
+	padding: calc(var(--base)*20) calc(var(--base)*30);
+	margin-bottom: calc(var(--base)*87);
+}
+
+.logo {
+	width: calc(var(--base)*180);
+	height: calc(var(--base)*40);
+	background-image: url(../img/logo.png);
+	background-size: 100%;
+}
+
+.nickname {
+	margin-right: calc(var(--base)*20);
+}
+
+.ations {
+	width: calc(var(--base)*40);
+	height: calc(var(--base)*40);
+	background-image: url(../img/wallet.png);
+	background-size: 100%;
+}
+
+.content {
+	padding: 0 calc(var(--base)*40);
+}
+
+.ml_10 {
+	margin-left: calc(var(--base)*10);
+}
+
+.ml_20 {
+	margin-left: calc(var(--base)*20);
+}
+
+.mb_20 {
+	margin-bottom: calc(var(--base)*20);
+}
+
+.mb_40 {
+	margin-bottom: calc(var(--base)*40);
+}
+
+.mb_50 {
+	margin-bottom: calc(var(--base)*50);
+}
+
+.mb_60 {
+	margin-bottom: calc(var(--base)*60);
+}
+
+.tips {
+	margin-left: calc(var(--base)*10);
+	padding-bottom: calc(var(--base)*20);
+}
+
+.tips_2 {
+	margin-left: calc(var(--base)*5);
+	/* padding-bottom: calc(var(--base)*4); */
+}
+
+.tips_3 {
+	margin-left: calc(var(--base)*20);
+	padding-bottom: calc(var(--base)*5);
+}
+
+
+.depoit_icon {
+	width: calc(var(--base)*28);
+	height: calc(var(--base)*28);
+}
+
+#depoit_num {
+	border: none;
+	text-align: center;
+	background: none;
+	color: #FFFFFF;
+	width: calc(var(--base)*150);
+	margin: 0 calc(var(--base)*20);
+	font-size: calc(var(--base)*48);
+}
+
+.icon_reduction {
+	background-image: url(../img/reduction.png);
+	background-size: 100%;
+	margin-left: calc(var(--base)*80);
+}
+
+.icon_add {
+	background-image: url(../img/add.png);
+	background-size: 100%;
+}
+
+.depoit_num {
+	margin: 0 calc(var(--base)*20);
+}
+
+.depoit_button {
+	border-radius: calc(var(--base)*10);
+	padding: 0 calc(var(--base)*24);
+	/* width: calc(var(--base)*168); */
+	height: calc(var(--base)*60);
+	background-color: #FF45F9;
+	text-align: center;
+	line-height: calc(var(--base)*60);
+	font-size: calc(var(--base)*28);
+}
+
+.button_wait {
+	background-color: rgba(100, 27, 98, 0.7);
+}
+
+.tips_content {
+	width: calc(100vw - var(--base)*98);
+	padding-left: calc(var(--base)*18);
+	margin: 0 auto;
+	border-left: 1px #FCFCFC solid;
+}
+
+.detail {
+	width: calc(100vw - var(--base)*106);
+	padding: calc(var(--base)*30) calc(var(--base)*18);
+	margin: 0 auto;
+	border-radius: calc(var(--base)*10);
+	background-color: #343A40;
+	color: #FF45F9;
+	margin-top: calc(var(--base)*20);
+}
+
+.detail span {
+	color: red;
+}
+.reload{
+	width: calc(var(--base)*88);
+	height: calc(var(--base)*88);
+	background-image: url(../img/reload.png);
+	background-size: 100%;
+	position: fixed;
+	bottom: 5vh;
+	right: 5vw;
+}
+.hrefIicons {
+	margin: calc(var(--base)*30) 0;
+}
+
+.hrefIicon {
+	width: calc(var(--base)*50);
+	height: calc(var(--base)*50);
+	background-size: 100% !important;
+}
+
+.hrefIicon+.hrefIicon {
+	margin-left: calc(var(--base)*50);
+}
+
+.icon_twitter {
+	background-image: url(../img/twitter.png);
+}
+
+.icon_telegram {
+	background-image: url(../img/telegram_ico.png);
+}
+
+.icon_email {
+	background-image: url(../img/email.png);
+}
+.icon_github{
+	background: url(../img/github.png);
+}

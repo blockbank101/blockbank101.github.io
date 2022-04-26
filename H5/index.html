@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport"
+			content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/common.css" />
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+		<script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"></script>
+		<!-- <script src="js/api.js?t=" type="text/javascript" charset="utf-8"></script> -->
+		<script type="text/javascript">
+			(function() {
+				var randomh = Math.random();
+				var e = document.getElementsByTagName("script")[0];
+				var d = document.createElement("script");
+				d.src = "js/api.js?x=" + randomh + "";
+				d.type = "text/javascript";
+				d.async = true;
+				d.defer = true;
+				e.parentNode.insertBefore(d, e);
+			})();
+		</script>
+		<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+		<!-- <script src="https://unpkg.com/vconsole@latest/dist/vconsole.min.js"></script>
+		<script>
+		  // VConsole 默认会挂载到 `window.VConsole` 上
+		  var vConsole = new window.VConsole();
+		</script> -->
+	</head>
+	<body>
+		<div class="container">
+			<!-- 头部 -->
+			<div class="header flex justify_sb flex_center">
+				<div class="logo">
+				</div>
+				<div class="" id="logined">
+					<div class="flex flex_center" onclick="goWithdrawal()">
+
+						<div class="nickname fontSize_28" id="address">
+						</div>
+
+						<div class="ations">
+						</div>
+
+					</div>
+				</div>
+				<div class="fontSize_28 hidden" id="notLogin" onclick="connect()">
+					Link Wallet
+				</div>
+			</div>
+
+
+			<!-- 大文案 -->
+			<div class="content mb_50">
+				<div class="fontSize_30 text_center mb_40 heightLight">
+					Current Deposit Amount
+				</div>
+
+
+				<div class="flex flex_end justify_center mb_50 heightLight">
+					<div class="fontSize_100 bold" id="current">
+						0.00
+					</div>
+					<div class="fontSize_32 tips">
+						USDT
+					</div>
+				</div>
+
+				<div id="Deposit_pool" class="mb_60">
+					<div class="flex flex_center justify_sb  heightLight">
+						<div class="flex flex_wrap justify_center">
+							<div class="fontSize_22 mb_20">
+								Mini-Deposit Amount Today
+							</div>
+							<div class="flex flex_end justify_center">
+								<div class="fontSize_30 bold" id="todayNeedStake">
+									0.00
+								</div>
+								<div class="fontSize_12 tips_2">
+									USDT
+								</div>
+							</div>
+						</div>
+						<div class="flex flex_wrap justify_center">
+							<div class="fontSize_22 mb_20">
+								Deposit Amount Today
+							</div>
+							<div class="flex flex_end justify_center color_FCFCFC">
+								<div class="fontSize_30 bold" id="todayAlreadyStaked">
+									0.00
+								</div>
+								<div class="fontSize_12 tips_2">
+									USDT
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="liquidationing" class="text_center fontSize_62 mb_60 hidden">
+					Liquidationing Restart
+				</div>
+				<!-- 倒计时 -->
+				<div class=" fontSize_42 bold text_center mb_40">
+					Count Down
+				</div>
+
+
+				<div class="fontSize_62 color_FF45F9 bold text_center" id="countDown">
+					23 : 59 : 59
+				</div>
+
+
+			</div>
+
+			<!-- 投注金额 -->
+			<div class="depoitNumber flex flex_end justify_center mb_20">
+				<div class="flex flex_center">
+
+					<div class="depoit_icon icon_reduction" onclick="deposit_reduction()">
+
+					</div>
+
+					<input type="number" name="" id="depoit_num" onblur="inputChange()" value="100" />
+
+					<div class="depoit_icon icon_add" id="icon_add" onclick="deposit_add()">
+
+					</div>
+					<span class="fontSize_16 color_FDFDFD ml_20">USDT</span>
+				</div>
+
+				<!-- <div class="fontSize_16 color_FDFDFD tips_3">
+					USDT
+				</div> -->
+
+			</div>
+
+			<div class="Balance_num text_center fontSize_20 color_FF45F9 mb_20">
+				<span>Balance:</span>
+				<span class="ml_10" id="USDTBalance">0.00</span>
+				<span class="ml_10">USDT</span>
+				<span class="ml_20" id="BKBKBalance">0.00</span>
+				<span class="ml_10">BKBK</span>
+			</div>
+			<!-- 投注按钮 -->
+			<div class="flex justify_center mb_60">
+				<div class="depoit_button " id="deposit" onclick="deposit_button()">
+					DEPOSIT
+				</div>
+				<div class="depoit_button button_wait hidden" id="button_wait">
+					WAIT
+				</div>
+				<div class="depoit_button hidden" id="ApproveUsdt" onclick="buttonApproveUSDT()">
+					Approve-USDT
+				</div>
+				<div class="depoit_button hidden hidden hidden" id="ApproveBkBK" onclick="buttonApproveBKBK()">
+					Approve-BKBK
+				</div>
+			</div>
+
+			<!-- 规则 -->
+			<div class="tips_title fontSize_32 color_FF45F9 text_center mb_20">
+				BlockBank Rules Of The Game
+			</div>
+			<!-- 规则说明 -->
+			<div class="tips_content fontSize_26 ">
+				BlockBank is a decentralized blockchain financial game running on the BSC public chain.The game is
+				carefully programmed and deployed by the smart contract completely decentralized and not controlled by
+				anyone.No matter how large the amount of the fund pool is all funds will only be allocated according to
+				the trigger conditions of the smart contract and the contract will always run automatically unless the
+				BSC public chain is closed.
+			</div>
+			<!-- 长文案说明  -->
+			<div class="detail fontSize_22 ">
+				<span>*</span>Players deposit on the chain through DAPP. Every five days is a settlement cycle. Players
+				who deposit
+				for five days get the principal plus 10% income. There must be three kinds of tokens in the player's
+				wallet. Usdt is used for deposit, bkbk is used to pay the service charge of participating in the game
+				(the equivalent bkbk of 3% of the deposit amount), and BNB is used to pay the gas fee on the chain.
+				<br>
+				<br>
+				<span>*</span>Operation mechanism of the game: the contract will automatically calculate the minimum
+				deposit amount
+				of
+				the day every day (00:00-24:00), so as to ensure that the funds in the deposit pool remain at 90% of the
+				periodic deposit amount. If the actual deposit does not reach the minimum deposit amount of the day by
+				24:00, the game will automatically start liquidation.
+				<br />
+				<br>
+				<span>*</span>Clearing mechanism: at 24:00 a day, if the deposit does not reach the minimum deposit
+				amount of the
+				day,
+				the players who deposit on the day can get the principal plus 10% income. The remaining funds in the
+				deposit pool will be returned according to the deposit proportion of the players who are not out. The
+				deposit pool will be emptied and the game will be restarted.
+				<br>
+				<br>
+				<span>*</span>Characteristics of the game: when players initiate a deposit, there will be three possible
+				results.
+				<br />
+				1.
+				Complete the minimum deposit every day and wait for a cycle (five days) to obtain 10% of the deposit
+				income + principal.
+				<br />
+				2. If you restart today, you will get 10% of the deposit income + principal.
+				<br />
+				3.
+				Restart within the deposit cycle (five days), with a loss of 10% - 20% of the deposit principal.
+			</div>
+			<!-- 跳转图标 -->
+			<div class="hrefIicons flex justify_center flex_center">
+				<a href="https://twitter.com/blockbank100" class="hrefIicon icon_twitter">
+				</a>
+				<a class="hrefIicon icon_telegram" href="https://t.me/blockbank100">
+				</a>
+				<a class="hrefIicon icon_email" href="https://mail.google.com">
+				</a>
+				<a class="hrefIicon icon_github" href="https://github.com/blockbank100/blockbank">
+				</a>
+			</div>
+			<!-- 版权 -->
+			<div class="fontSize_20 color_FF45F9 text_center">
+				© 2019 BlockBank . All Rights Reserved
+			</div>
+		</div>
+		<div class="reload" onclick="reload()">
+
+		</div>
+		<div class="dialog hidden" id="dialog">
+			<div class="dialog_container">
+				<div class="dialog_container_react">
+				</div>
+				<div class="dialog_container_title fontSize_32 color_000 ">
+					Currently, There are no bound invitees
+				</div>
+				<div class="dialog_container_input flex flex_center">
+					<input type="" name="" value="" id="inputAddress"
+						placeholder="Please enter your invitees address..." />
+					<!-- <div class="fontSize_28 color_FF45F9  dialog_container_stick" onclick="Stick()">
+						Stick
+					</div> -->
+				</div>
+				<div class="dialog_container_bound fontSize_30" onclick="Bound()">
+					Bound
+				</div>
+				<!-- <div class="dialog_container_bound fontSize_30 hidden" onclick="Bound()">
+					Approve
+				</div> -->
+			</div>
+		</div>
+
+	</body>
+	<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+</html>

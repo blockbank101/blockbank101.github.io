@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport"
+			content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title><meta http-equiv="Pragma" content="no-cache" />
+		<link rel="stylesheet" type="text/css" href="css/common.css" />
+		<link rel="stylesheet" type="text/css" href="css/Withdrawal.css" />
+		<script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"></script>
+		<script src="js/api.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+		<!-- <script src="https://unpkg.com/vconsole@latest/dist/vconsole.min.js"></script> -->
+		<!-- <script>
+			// VConsole 默认会挂载到 `window.VConsole` 上
+			var vConsole = new window.VConsole();
+		</script> -->
+	</head>
+	<body>
+		<div class="container">
+			<div class="sticky mb_40">
+
+				<div class=" fontSize_32 color_FCFCFC mb_37">
+					My Withdrawal Pool
+				</div>
+
+
+				<div class="flex flex_end mb_40">
+					<div class="money  flex flex_end">
+						<div class="fontSize_32" id="userBalance">
+							0.00
+						</div>
+						<div class="fontSize_22 ml_5">
+							USDT
+						</div>
+					</div>
+					<div class="Withdrawal fontSize_26 color_61CE70" onclick="button_withdraw()">
+						Withdrawal
+					</div>
+				</div>
+				<!-- 
+				<div class="flex justify_sb mb_40">
+					<div class="">
+						<div class="fontSize_28 mb_13">
+							Balance :
+						</div>
+						<div class="flex flex_end">
+							<div class="fontSize_28" id="Balance_usdt">
+								0.00
+							</div>
+							<div class="fontSize_20 ml_5">
+								USDT
+							</div>
+						</div>
+					</div>
+					<div class="">
+						<div class="fontSize_28 mb_13">
+							Balance:
+						</div>
+						<div class="flex flex_end">
+							<div class="fontSize_28" id="Balance_bkbk">
+								0.00
+							</div>
+							<div class="fontSize_20 ml_5">
+								BKBK
+							</div>
+						</div>
+					</div>
+				</div> -->
+
+				<div class="flex justify_sb mb_40">
+					<div class="">
+						<div class="fontSize_28 mb_13">
+							Totel Deposit Pool
+						</div>
+						<div class="flex flex_end">
+							<div class="fontSize_28" id="totalAmount">
+								0.00
+							</div>
+							<div class="fontSize_20 ml_5">
+								USDT
+							</div>
+						</div>
+					</div>
+					<div class="">
+						<div class="fontSize_28 mb_13">
+							Totel Cumulative Interest
+						</div>
+						<div class="flex flex_end">
+							<div class="fontSize_28" id="totalInterest">
+								0.00
+							</div>
+							<div class="fontSize_20 ml_5">
+								USDT
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="fontSize_32">
+					Invitees Address
+				</div>
+
+				<div class="fontSize_26 address color_9e" id="parentAddress">
+					Please enter your invitees address...
+				</div>
+
+			</div>
+			<div class="depositList" id="depositList">
+				<!-- 	<div class="depositList_item">
+					<div class="flex mb_20">
+						<div class="depositList_item_content">
+							<div class="fontSize_28 mb_13">
+								Deposit Pool
+							</div>
+							<div class="flex flex_end">
+								<div class="fontSize_28">
+									16323.63
+								</div>
+								<div class="fontSize_20 ml_5">
+									USDT
+								</div>
+							</div>
+						</div>
+						<div class="depositList_item_content">
+							<div class="fontSize_28 mb_13">
+								Cumulative Interest
+							</div>
+							<div class="flex flex_end">
+								<div class="fontSize_28">
+									16323.63
+								</div>
+								<div class="fontSize_20 ml_5">
+									USDT
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="depositList_item_line mb_20">
+					</div>
+					<div class="depositList_item_time fontSize_28">
+						Release Time: 2022-03-29
+					</div>
+
+
+				</div> -->
+			</div>
+
+			<div class="dialog hidden" id="dialog">
+				<div class="dialog_container">
+					<div class="dialog_container_react">
+					</div>
+					<div class="dialog_container_title fontSize_32 color_000 ">
+						Currently, There are no bound invitees
+					</div>
+					<div class="dialog_container_input flex flex_center">
+						<input type="" name="" id="" value="" placeholder="Please enter your invitees address..." />
+						<div class="fontSize_28 color_FF45F9  dialog_container_stick">
+							Stick
+						</div>
+					</div>
+					<div class="dialog_container_bound fontSize_30">
+						Bound
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</body>
+	
+	<script src="js/withdrawal.js" type="text/javascript" charset="utf-8"></script>
+</html>

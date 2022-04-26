@@ -1,0 +1,80 @@
+.container {
+	color: #FFFFFF;
+	width: calc(100vw - var(--base)*60);
+	min-height: calc(100vh - var(--base)*60);
+	background-color: #280D27;
+	padding: calc(var(--base)*30);
+}
+
+.Withdrawal {
+	margin-left: calc(var(--base)*20);
+	height: calc(var(--base)*34);
+	line-height: calc(var(--base)*34);
+	border-bottom: 1px solid #61CE70;
+}
+
+.address {
+	width: 100%;
+	height: calc(var(--base)*74);
+	line-height: calc(var(--base)*74);
+	border-bottom: 1px solid rgba(253, 253, 253, 0.25);
+}
+
+.depositList {
+	width: 100%;
+	height: calc(100vh - var(--base)*1);
+}
+
+.sticky {
+	position: sticky;
+	padding-top: calc(var(--base)*30);
+	top: calc(var(--base)*0);
+	left: calc(var(--base)*30);
+	background-color: #280D27;
+}
+
+.depositList_item {
+	padding: calc(var(--base)*30) calc(var(--base)*30) calc(var(--base)*20);
+	background: #343A40;
+	border-radius: calc(var(--base)*10);
+}
+
+.depositList_item_content {
+	width: 50%;
+}
+
+.depositList_item_line {
+	width: 100%;
+	height: 1px;
+	background-color: rgba(253, 253, 253, 0.25);
+}
+
+.depositList_item_time {
+	width: 100%;
+	text-align: right;
+}
+
+.depositList_item+.depositList_item {
+	margin-top: calc(var(--base)*20);
+}
+
+/* margin */
+.ml_5 {
+	margin-left: calc(var(--base)*10);
+}
+
+.mb_13 {
+	margin-bottom: calc(var(--base)*13);
+}
+
+.mb_20 {
+	margin-bottom: calc(var(--base)*20);
+}
+
+.mb_37 {
+	margin-bottom: calc(var(--base)*37);
+}
+
+.mb_40 {
+	margin-bottom: calc(var(--base)*40);
+}
