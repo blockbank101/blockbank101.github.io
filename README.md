@@ -1,4 +1,3 @@
-# blockbank101.github.io
 BlockBank Rules Of The Game
 BlockBank is a decentralized blockchain financial game running on the BSC public chain.The game is carefully programmed and deployed by the smart contract completely decentralized and not controlled by anyone.No matter how large the amount of the fund pool is all funds will only be allocated according to the trigger conditions of the smart contract and the contract will always run automatically unless the BSC public chain is closed.
 Players deposit on the chain through DAPP. Every five days is a settlement cycle. Players who deposit for five days get the principal plus 10% income. There must be three kinds of tokens in the player's wallet. Usdt is used for deposit, bkbk is used to pay the service charge of participating in the game (the equivalent bkbk of 3% of the deposit amount), and BNB is used to pay the gas fee on the chain.
