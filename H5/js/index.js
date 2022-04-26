@@ -4,22 +4,16 @@ var button_ApproveUsdt_isUsed = false
 var button_ApproveBkbk_isUsed = false
 var Approveing = false
 var staking = false
-var isClosed = false
-var Settlementting = false
 
 function countDown() {
-	if (isClosed) {
-		return
-	}
+	let utc = new Date().toUTCString()
 	let utc_h = new Date().getUTCHours()
 	// let utc_h = 0
 	let utc_m = new Date().getUTCMinutes()
-	// let utc_m = 19
 	let utc_s = new Date().getUTCSeconds()
-	// let utc_s = 59
 	let now = utc_h * 60 * 60 + utc_m * 60 + utc_s
 	let end = 24 * 60 * 60
-	if (utc_h >= 1 && utc_s % 60 == 0) {
+	if (utc_s % 60 == 0) {
 		fetchDate()
 	}
 	let timediff = Math.round((end - now));
@@ -29,43 +23,14 @@ function countDown() {
 	hour = timerFilter(hour);
 	minute = timerFilter(minute);
 	second = timerFilter(second);
-	// console.log(2222222222, utc_h < 1 && !liquidationStatus && !Settlementting);
-	// console.log('liquidationStatus', liquidationStatus);
-	// console.log('Settlementting', Settlementting);
-	// console.log("utcmmmmm", utc_m);
-	if (utc_h < 1 && !liquidationStatus && !Settlementting) {
-		if (utc_s % 5 == 0) {
-
-			slToday().then(res => {
-				console.log('slToday', 11111111111);
-				if (res == 0) {
-					setValue('countDown', 'Handleding!')
-					button_button_wait.show()
-					liquidationStatus = false
-					Settlementting = false
-				}
-				if (res == 1) {
-					Settlementting = true
-					liquidationStatus = false
-				}
-				if (res == 2) {
-					Settlementting = false
-					liquidationStatus = true
-				}
-			})
-		}
-	}
-	if (utc_h > 1) {
-		liquidationStatus = false
-		Settlementting = false
-	}
-	if (liquidationStatus && utc_h < 1) {
+	if (utc_h < 1 && utc_m < 20) {
+		console.log(111);
+		setValue('countDown', 'Liquidationing!')
 		button_button_wait.show()
 		Deposit_pool.hide()
+		liquidationStatus = true
 		setValue('countDown', timerFilter(utc_h) + " : " + minute + " : " + second)
-	} else if (Settlementting && utc_h < 1 && utc_m < 20) {
-		setValue('countDown', 'Settlementting!')
-		button_button_wait.show()
+		return
 	} else {
 		if (staking) {
 			button_button_wait.show()
@@ -78,19 +43,12 @@ function countDown() {
 			if (button_ApproveUsdt_isUsed) {
 				button_ApproveUsdt.show()
 			}
-		} else {
-			if (!Approveing) {
-				button_button_wait.hide()
-				button_deposit.show()
-			}
-			if (button_ApproveBkbk_isUsed) {
-				button_ApproveBkBK.show()
-			}
-			if (button_ApproveUsdt_isUsed) {
-				button_ApproveUsdt.show()
-			}
 		}
+		liquidationStatus = false
+	}
+	if (!liquidationStatus) {
 		setValue('countDown', hour + " : " + minute + " : " + second)
+
 	}
 
 	function timerFilter(params) {
@@ -101,7 +59,9 @@ function countDown() {
 		}
 	}
 }
-
+setInterval(() => {
+	countDown()
+}, 1000)
 
 let Deposit_pool = {
 	show: () => {
@@ -149,7 +109,6 @@ let button_deposit = {
 }
 let button_button_wait = {
 	show: () => {
-		setValue('button_wait', "WAIT")
 		document.getElementById('deposit').classList.add('hidden')
 		document.getElementById('button_wait').classList.remove('hidden')
 		document.getElementById('ApproveUsdt').classList.add('hidden')
@@ -228,7 +187,6 @@ let fetchDate = () => {
 	let num = () => {
 		return parseFloat(Math.random() * 4000).toFixed(2)
 	}
-	fetchConfiStatus()
 	return Promise.all([
 		common_usdtBalance().then(res => {
 			setValue('USDTBalance', res.num)
@@ -250,12 +208,12 @@ let fetchDate = () => {
 
 }
 
-let step = 10
+let step = 100
 
 async function deposit_add() {
 
 	if (liquidationStatus) {
-		Toast("Settlementting,Plsease waitting!")
+		Toast("Liquidationing,Plsease waitting!")
 		return
 	}
 	let input = document.getElementById('depoit_num')
@@ -274,7 +232,7 @@ async function deposit_add() {
 }
 let deposit_reduction = () => {
 	if (liquidationStatus) {
-		Toast("Settlementting,Plsease waitting!")
+		Toast("Liquidationing,Plsease waitting!")
 		return
 	}
 	let input = document.getElementById('depoit_num')
@@ -290,7 +248,7 @@ let deposit_reduction = () => {
 
 async function inputChange(v) {
 	if (liquidationStatus) {
-		Toast("Settlementting,Plsease waitting!")
+		Toast("Liquidationing,Plsease waitting!")
 		return
 	}
 	let value = input_num.get()
@@ -314,8 +272,6 @@ let buttonApproveUSDT = () => {
 	button_button_wait.show()
 	Approveing = true
 	common_approveUsdt().then(res => {
-	    console.log("approveUsdt",res)
-	    
 		loading.hide()
 		button_button_wait.hide()
 		Approveing = false
@@ -351,10 +307,6 @@ let buttonApproveBKBK = () => {
 	})
 }
 let deposit_button = () => {
-	if (isClosed) {
-		Toast('Stop the service!!!')
-		return
-	}
 	let despositValue = input_num.get()
 	if (despositValue < step) {
 		Toast("USDT less than 100")
@@ -375,13 +327,11 @@ let deposit_button = () => {
 		}
 		if (res == 3) {
 			Toast('approve USDT please!')
-						Approveing=true
 			button_ApproveUsdt.show()
 			return
 		}
 		if (res == 4) {
 			Toast('approve BKBK please!')
-						Approveing=true
 			button_ApproveBkBK.show()
 			return
 		}
@@ -409,7 +359,7 @@ let deposit_button = () => {
 let Bound = async () => {
 
 	if (liquidationStatus) {
-		Toast("Settlementting,Plsease waitting!")
+		Toast("Liquidationing,Plsease waitting!")
 		return
 	}
 	let address = input_address.get()
@@ -502,39 +452,14 @@ let reload = () => {
 }
 
 
-function fetchConfiStatus() {
-	let xhr = new XMLHttpRequest()
-	xhr.open('GET', 'https://tool.blockbank.pro/home/index/getConfig', false)
-	xhr.onloadend = function(e) {
-		let res = JSON.parse(e.currentTarget.responseText)
-		if (res.data.status == 1) {
-			isClosed = false
-			setValue('button_wait', 'WAIT')
-		}
-		if (res.data.status == 0) {
-			isClosed = true
-			button_button_wait.show()
-			setValue('button_wait', 'CLOSED')
-			setValue('countDown', 'CLOSED')
-		}
-	}
-	xhr.send(null)
-
-}
-
 window.onload = () => {
 	loading.show()
-
 	common_connect().then(res => {
 		if (res) {
 			userAdress = res
 			logined.show(res)
-			fetchConfiStatus()
 			fetchDate().then(res => {
 				loading.hide()
-				setInterval(() => {
-					countDown()
-				}, 1000)
 			})
 		}
 		if (!res) {
